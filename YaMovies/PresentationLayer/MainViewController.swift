@@ -31,12 +31,14 @@ class MainViewController: UIViewController {
         title = "YaMovies"
         tableViewConfigure()
         collectionViewConfigure()
-        
-        service = YandexOauthServiceImp(network: NetworkImp())
+        let network = NetworkImp()
+        service = YandexOauthServiceImp(network: network)
         service.getResourceBy("/", limit: 20, offset: 0) { (responce, error) in
             
-            print(responce)
-            print(error)
+            guard let items = responce?._embedded?.items else { return }
+            items.forEach({ (item) in
+                
+            })
         }
     }
 

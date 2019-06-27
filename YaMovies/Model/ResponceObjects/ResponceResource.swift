@@ -17,7 +17,7 @@ struct ResponceResource: Decodable {
     let created: String?
     let modified: String?
     let path: String?
-    let comment_ids: commentIds?
+    let comment_ids: CommentIds?
     let type: String?
     let revision: Int?
 }
