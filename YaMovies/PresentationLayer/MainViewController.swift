@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
     
@@ -18,8 +19,11 @@ class MainViewController: UIViewController {
     var realmManager: RealmManager!
     var tableView: UITableView!
     var collectionView: UICollectionView!
-    var groups: [String] = []
     var service: YandexOauthService!
+    private var videos: Results<VideoObject>!
+    private var folders: Results<FolderObject>!
+    private var token: NotificationToken? = nil
+
     var selectedKey: String = "" {
         didSet {
             collectionView.reloadData()
@@ -30,17 +34,44 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
   
         title = "YaMovies"
+        realmManager = RealmManager()
+        folders = realmManager.realm.objects(FolderObject.self)
+        videos = realmManager.realm.objects(VideoObject.self)
+
+        setupObserver()
         tableViewConfigure()
         collectionViewConfigure()
-        realmManager = RealmManager()
         let network = NetworkImp()
         service = YandexOauthServiceImp(network: network)
-        service.getResourceBy("/", limit: 20, offset: 0) { (responce, error) in
-            
-            guard let items = responce?._embedded?.items else { return }
-            items.forEach({ (item) in
+        getContentBy("/")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    deinit {
+        token?.invalidate()
+    }
+    
+    private func setupObserver() {
+
+        token = folders.observe { (changes: RealmCollectionChange)  in
+            switch changes {
+            case .initial:
+                self.tableView.reloadData()
+            case .update(_, let deletions, let insertions, let updates):
+                let fromRow = { (row: Int) in return IndexPath(row: row, section: 0) }
                 
-            })
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: insertions.map(fromRow), with: .automatic)
+                self.tableView.reloadRows(at: updates.map(fromRow), with: .automatic)
+                self.tableView.deleteRows(at: deletions.map(fromRow), with: .automatic)
+                self.tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
 
@@ -71,14 +102,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return folders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") else {
             return UITableViewCell()
         }
-        cell.textLabel?.text = groups[indexPath.row]
+        cell.textLabel?.text = folders[indexPath.row].name
         return cell
     }
     
@@ -99,7 +130,8 @@ extension MainViewController: UITableViewDelegate {
             return
         }
         
-        selectedKey = groups[indexPath.row]
+        
+//        selectedKey = groups[indexPath.row]
     }
 }
 
@@ -164,4 +196,28 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         print("didUpdateFocusIn \(nextFocusedIndexPath.row)")
     }
     
+}
+
+
+extension MainViewController {
+    
+    func getContentBy(_ path: String) {
+        
+        service.getResourceBy(path, limit: 20, offset: 0) { (responce, error) in
+            var folders: [FolderObject] = []
+            guard let items = responce?._embedded?.items else { return }
+            items.forEach({ (item) in
+                if item.type == "dir" {
+                    let folder = FolderObject()
+                    folder.name = item.name
+                    folder.created = item.created
+                    folder.resourceId = item.resource_id ?? ""
+                    folder.path = item.path
+                    folder.type = item.type
+                    folders.append(folder)
+                }
+            })
+            self.realmManager.create(folders)
+        }
+    }
 }

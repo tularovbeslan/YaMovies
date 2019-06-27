@@ -30,15 +30,15 @@
 		2B4B208D22C4081B0017C693 /* FlowNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4B208C22C4081B0017C693 /* FlowNavigationController.storyboard */; };
 		2B4B208F22C4E6C30017C693 /* FolderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B208E22C4E6C30017C693 /* FolderObject.swift */; };
 		2B4B209122C4F00E0017C693 /* VideoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209022C4F00E0017C693 /* VideoObject.swift */; };
-		2B4B209322C4FBB00017C693 /* ResponceResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209222C4FBB00017C693 /* ResponceResource.swift */; };
-		2B4B209522C4FBC80017C693 /* Embedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209422C4FBC80017C693 /* Embedded.swift */; };
-		2B4B209722C4FBDF0017C693 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209622C4FBDF0017C693 /* Item.swift */; };
+		2B4B209522C4FBC80017C693 /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209422C4FBC80017C693 /* ResourceList.swift */; };
+		2B4B209722C4FBDF0017C693 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209622C4FBDF0017C693 /* Resource.swift */; };
 		2B4B209922C4FBEE0017C693 /* Exif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209822C4FBEE0017C693 /* Exif.swift */; };
 		2B4B209B22C4FC090017C693 /* CommentIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209A22C4FC090017C693 /* CommentIds.swift */; };
 		2B4B209D22C4FC160017C693 /* ResponceCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209C22C4FC160017C693 /* ResponceCode.swift */; };
 		2B4B209F22C4FC240017C693 /* ResponceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209E22C4FC240017C693 /* ResponceToken.swift */; };
 		2B4B20A122C4FC360017C693 /* YaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A022C4FC360017C693 /* YaError.swift */; };
 		2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A522C4FE870017C693 /* RealmManager.swift */; };
+		2B4B20A822C589A00017C693 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A722C589A00017C693 /* ShareInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,15 +87,15 @@
 		2B4B208C22C4081B0017C693 /* FlowNavigationController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlowNavigationController.storyboard; sourceTree = "<group>"; };
 		2B4B208E22C4E6C30017C693 /* FolderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderObject.swift; sourceTree = "<group>"; };
 		2B4B209022C4F00E0017C693 /* VideoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoObject.swift; sourceTree = "<group>"; };
-		2B4B209222C4FBB00017C693 /* ResponceResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponceResource.swift; sourceTree = "<group>"; };
-		2B4B209422C4FBC80017C693 /* Embedded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embedded.swift; sourceTree = "<group>"; };
-		2B4B209622C4FBDF0017C693 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2B4B209422C4FBC80017C693 /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
+		2B4B209622C4FBDF0017C693 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		2B4B209822C4FBEE0017C693 /* Exif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exif.swift; sourceTree = "<group>"; };
 		2B4B209A22C4FC090017C693 /* CommentIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIds.swift; sourceTree = "<group>"; };
 		2B4B209C22C4FC160017C693 /* ResponceCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponceCode.swift; sourceTree = "<group>"; };
 		2B4B209E22C4FC240017C693 /* ResponceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponceToken.swift; sourceTree = "<group>"; };
 		2B4B20A022C4FC360017C693 /* YaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaError.swift; sourceTree = "<group>"; };
 		2B4B20A522C4FE870017C693 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		2B4B20A722C589A00017C693 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
 		5858A27678793D7C1ABCDB74 /* Pods-YaMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.release.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.release.xcconfig"; sourceTree = "<group>"; };
 		A061C7988BC5BAAA67745BF1 /* Pods-YaMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.debug.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		E5FBB784CC0460BA9F336211 /* Pods_YaMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YaMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,14 +263,14 @@
 		2B4B20A222C4FC480017C693 /* ResponceObjects */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B209222C4FBB00017C693 /* ResponceResource.swift */,
-				2B4B209422C4FBC80017C693 /* Embedded.swift */,
-				2B4B209622C4FBDF0017C693 /* Item.swift */,
+				2B4B209422C4FBC80017C693 /* ResourceList.swift */,
+				2B4B209622C4FBDF0017C693 /* Resource.swift */,
 				2B4B20A022C4FC360017C693 /* YaError.swift */,
 				2B4B209E22C4FC240017C693 /* ResponceToken.swift */,
 				2B4B209C22C4FC160017C693 /* ResponceCode.swift */,
 				2B4B209A22C4FC090017C693 /* CommentIds.swift */,
 				2B4B209822C4FBEE0017C693 /* Exif.swift */,
+				2B4B20A722C589A00017C693 /* ShareInfo.swift */,
 			);
 			path = ResponceObjects;
 			sourceTree = "<group>";
@@ -486,9 +486,9 @@
 			files = (
 				2B4B209122C4F00E0017C693 /* VideoObject.swift in Sources */,
 				2B4B206522C045010017C693 /* MovieCollectionViewCell.swift in Sources */,
-				2B4B209322C4FBB00017C693 /* ResponceResource.swift in Sources */,
+				2B4B20A822C589A00017C693 /* ShareInfo.swift in Sources */,
 				2B4B203C22C01F2B0017C693 /* MainViewController.swift in Sources */,
-				2B4B209722C4FBDF0017C693 /* Item.swift in Sources */,
+				2B4B209722C4FBDF0017C693 /* Resource.swift in Sources */,
 				2B4B207D22C2F2710017C693 /* YandexOauthService.swift in Sources */,
 				2B4B206722C0475A0017C693 /* UIViewExtension.swift in Sources */,
 				2B4B206D22C0E26C0017C693 /* NetworkImp.swift in Sources */,
@@ -501,7 +501,7 @@
 				2B4B208F22C4E6C30017C693 /* FolderObject.swift in Sources */,
 				2B4B206F22C0E2830017C693 /* Network.swift in Sources */,
 				2B4B209F22C4FC240017C693 /* ResponceToken.swift in Sources */,
-				2B4B209522C4FBC80017C693 /* Embedded.swift in Sources */,
+				2B4B209522C4FBC80017C693 /* ResourceList.swift in Sources */,
 				2B4B209D22C4FC160017C693 /* ResponceCode.swift in Sources */,
 				2B4B208722C4019D0017C693 /* Router.swift in Sources */,
 				2B4B207F22C2F27F0017C693 /* YandexOauthServiceImp.swift in Sources */,

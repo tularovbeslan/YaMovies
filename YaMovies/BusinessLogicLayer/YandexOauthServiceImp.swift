@@ -51,14 +51,14 @@ struct YandexOauthServiceImp: YandexOauthService {
         }
     }
     
-    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (ResponceResource?, Error?) -> Void) {
+    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (Resource?, Error?) -> Void) {
         
         guard let token = UserDefaultsManager.accessToken else { return }
         let url = URL(string: "https://cloud-api.yandex.net/v1/disk/resources")!
         let parameters: [String : Any] = ["path": path, "limit" : limit, "offset" : offset]
         let headers: [String: String] = ["Authorization" : "OAuth \(token)", "Content-type" : "application/json"]
         
-        network.requestObject(url, method: .get, parameters: parameters, headers: headers, encoding: .url, objectType: ResponceResource.self) { (responce, error) in
+        network.requestObject(url, method: .get, parameters: parameters, headers: headers, encoding: .url, objectType: Resource.self) { (responce, error) in
             completion(responce, error)
         }
     }

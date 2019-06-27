@@ -16,12 +16,7 @@ class RealmManager {
     var realm: Realm
     
     init() {
-        let config = Realm.Configuration(schemaVersion: 2, migrationBlock: { migration, oldSchemaVersion in
-            if (oldSchemaVersion < 2) {
-                
-            }
-        })
-        
+        let config = Realm.Configuration.defaultConfiguration
         realm = try! Realm(configuration: config)
     }
     
@@ -30,7 +25,7 @@ class RealmManager {
         do {
             
             try realm.write {
-                realm.add(object, update: .all)
+                realm.add(object, update: .modified)
             }
         } catch {
             post(error)
@@ -42,7 +37,7 @@ class RealmManager {
         do {
             
             try realm.write {
-                realm.add(objects, update: .all)
+                realm.add(objects, update: .modified)
             }
         } catch {
             post(error)

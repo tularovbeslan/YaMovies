@@ -1,5 +1,5 @@
 //
-//  Embedded.swift
+//  ResourceList.swift
 //  YaMovies
 //
 //  Created by Beslan Tularov on 27/06/2019.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Embedded: Decodable {
+struct ResourceList: Decodable {
     
     let sort: String?
-    let items: [Item]?
+    let items: [Resource]
     let limit: Int?
     let offset: Int?
-    let path: String?
+    let path: String
     let total: Int?
 }

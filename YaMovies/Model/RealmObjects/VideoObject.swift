@@ -11,14 +11,42 @@ import RealmSwift
 
 class VideoObject: Object {
     
-    dynamic var name: String = ""
-    dynamic var created: String = ""
-    dynamic var resource_id: String = ""
-    dynamic var path: String = ""
-    dynamic var file: String = ""
-    dynamic var media_type: String = ""
-    dynamic var preview: String = ""
-    dynamic var public_url: String = ""
-    dynamic var type: String = ""
-    dynamic var size: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var created: String = ""
+    @objc dynamic var resourceId: String = ""
+    @objc dynamic var path: String = ""
+    @objc dynamic var file: String = ""
+    @objc dynamic var mediaType: String = ""
+    @objc dynamic var preview: String = ""
+    @objc dynamic var publicUrl: String = ""
+    @objc dynamic var type: String = ""
+    @objc dynamic var size: Int = 0
+    
+    override static func primaryKey() -> String? {
+        return "resourceId"
+    }
+    
+    convenience init(name: String,
+                     created: String,
+                     resourceId: String,
+                     path: String,
+                     file: String,
+                     mediaType: String,
+                     preview: String,
+                     publicUrl: String,
+                     type: String,
+                     size: Int) {
+        
+        self.init()
+        self.name = name
+        self.created = created
+        self.resourceId = resourceId
+        self.path = path
+        self.file = file
+        self.mediaType = mediaType
+        self.preview = preview
+        self.publicUrl = publicUrl
+        self.type = type
+        self.size = size
+    }
 }

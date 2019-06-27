@@ -11,11 +11,11 @@ import RealmSwift
 
 class FolderObject: Object {
     
-    dynamic var name: String = ""
-    dynamic var created: String = ""
-    dynamic var resourceId: String = ""
-    dynamic var path: String = ""
-    dynamic var type: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var created: String = ""
+    @objc dynamic var resourceId: String = UUID().uuidString
+    @objc dynamic var path: String = ""
+    @objc dynamic var type: String = ""
     
     override static func primaryKey() -> String? {
         return "resourceId"
