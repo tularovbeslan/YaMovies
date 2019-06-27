@@ -233,9 +233,8 @@
 		2B4B207922C29A610017C693 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B20A222C4FC480017C693 /* Responce */,
-				2B4B208E22C4E6C30017C693 /* FolderObject.swift */,
-				2B4B209022C4F00E0017C693 /* VideoObject.swift */,
+				2B4B20A322C4FCF90017C693 /* RealmObjects */,
+				2B4B20A222C4FC480017C693 /* ResponceObjects */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,7 +257,7 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		2B4B20A222C4FC480017C693 /* Responce */ = {
+		2B4B20A222C4FC480017C693 /* ResponceObjects */ = {
 			isa = PBXGroup;
 			children = (
 				2B4B209222C4FBB00017C693 /* ResponceResource.swift */,
@@ -270,7 +269,16 @@
 				2B4B209A22C4FC090017C693 /* CommentIds.swift */,
 				2B4B209822C4FBEE0017C693 /* Exif.swift */,
 			);
-			path = Responce;
+			path = ResponceObjects;
+			sourceTree = "<group>";
+		};
+		2B4B20A322C4FCF90017C693 /* RealmObjects */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B208E22C4E6C30017C693 /* FolderObject.swift */,
+				2B4B209022C4F00E0017C693 /* VideoObject.swift */,
+			);
+			path = RealmObjects;
 			sourceTree = "<group>";
 		};
 		A2446811DF626E5C818386FC /* Pods */ = {
