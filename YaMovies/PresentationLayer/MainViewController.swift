@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     }
     
     var router: Router!
+    var realmManager: RealmManager!
     var tableView: UITableView!
     var collectionView: UICollectionView!
     var groups: [String] = []
@@ -31,6 +32,7 @@ class MainViewController: UIViewController {
         title = "YaMovies"
         tableViewConfigure()
         collectionViewConfigure()
+        realmManager = RealmManager()
         let network = NetworkImp()
         service = YandexOauthServiceImp(network: network)
         service.getResourceBy("/", limit: 20, offset: 0) { (responce, error) in
