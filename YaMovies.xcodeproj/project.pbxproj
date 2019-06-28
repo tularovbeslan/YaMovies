@@ -28,8 +28,7 @@
 		2B4B208922C401A70017C693 /* RouterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B208822C401A70017C693 /* RouterImp.swift */; };
 		2B4B208B22C402060017C693 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B208A22C402060017C693 /* Presentable.swift */; };
 		2B4B208D22C4081B0017C693 /* FlowNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4B208C22C4081B0017C693 /* FlowNavigationController.storyboard */; };
-		2B4B208F22C4E6C30017C693 /* FolderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B208E22C4E6C30017C693 /* FolderObject.swift */; };
-		2B4B209122C4F00E0017C693 /* VideoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209022C4F00E0017C693 /* VideoObject.swift */; };
+		2B4B209122C4F00E0017C693 /* ResourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209022C4F00E0017C693 /* ResourceObject.swift */; };
 		2B4B209522C4FBC80017C693 /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209422C4FBC80017C693 /* ResourceList.swift */; };
 		2B4B209722C4FBDF0017C693 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209622C4FBDF0017C693 /* Resource.swift */; };
 		2B4B209922C4FBEE0017C693 /* Exif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B209822C4FBEE0017C693 /* Exif.swift */; };
@@ -39,6 +38,7 @@
 		2B4B20A122C4FC360017C693 /* YaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A022C4FC360017C693 /* YaError.swift */; };
 		2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A522C4FE870017C693 /* RealmManager.swift */; };
 		2B4B20A822C589A00017C693 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A722C589A00017C693 /* ShareInfo.swift */; };
+		2B4B20AA22C59A100017C693 /* ResourceListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A922C59A100017C693 /* ResourceListObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +85,7 @@
 		2B4B208822C401A70017C693 /* RouterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterImp.swift; sourceTree = "<group>"; };
 		2B4B208A22C402060017C693 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		2B4B208C22C4081B0017C693 /* FlowNavigationController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlowNavigationController.storyboard; sourceTree = "<group>"; };
-		2B4B208E22C4E6C30017C693 /* FolderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderObject.swift; sourceTree = "<group>"; };
-		2B4B209022C4F00E0017C693 /* VideoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoObject.swift; sourceTree = "<group>"; };
+		2B4B209022C4F00E0017C693 /* ResourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceObject.swift; sourceTree = "<group>"; };
 		2B4B209422C4FBC80017C693 /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
 		2B4B209622C4FBDF0017C693 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		2B4B209822C4FBEE0017C693 /* Exif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exif.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		2B4B20A022C4FC360017C693 /* YaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaError.swift; sourceTree = "<group>"; };
 		2B4B20A522C4FE870017C693 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		2B4B20A722C589A00017C693 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
+		2B4B20A922C59A100017C693 /* ResourceListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceListObject.swift; sourceTree = "<group>"; };
 		5858A27678793D7C1ABCDB74 /* Pods-YaMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.release.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.release.xcconfig"; sourceTree = "<group>"; };
 		A061C7988BC5BAAA67745BF1 /* Pods-YaMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.debug.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		E5FBB784CC0460BA9F336211 /* Pods_YaMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YaMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,8 +278,8 @@
 		2B4B20A322C4FCF90017C693 /* RealmObjects */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B208E22C4E6C30017C693 /* FolderObject.swift */,
-				2B4B209022C4F00E0017C693 /* VideoObject.swift */,
+				2B4B209022C4F00E0017C693 /* ResourceObject.swift */,
+				2B4B20A922C59A100017C693 /* ResourceListObject.swift */,
 			);
 			path = RealmObjects;
 			sourceTree = "<group>";
@@ -484,7 +484,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4B209122C4F00E0017C693 /* VideoObject.swift in Sources */,
+				2B4B20AA22C59A100017C693 /* ResourceListObject.swift in Sources */,
+				2B4B209122C4F00E0017C693 /* ResourceObject.swift in Sources */,
 				2B4B206522C045010017C693 /* MovieCollectionViewCell.swift in Sources */,
 				2B4B20A822C589A00017C693 /* ShareInfo.swift in Sources */,
 				2B4B203C22C01F2B0017C693 /* MainViewController.swift in Sources */,
@@ -498,7 +499,6 @@
 				2B4B209922C4FBEE0017C693 /* Exif.swift in Sources */,
 				2B4B207622C28D290017C693 /* Utils.swift in Sources */,
 				2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */,
-				2B4B208F22C4E6C30017C693 /* FolderObject.swift in Sources */,
 				2B4B206F22C0E2830017C693 /* Network.swift in Sources */,
 				2B4B209F22C4FC240017C693 /* ResponceToken.swift in Sources */,
 				2B4B209522C4FBC80017C693 /* ResourceList.swift in Sources */,

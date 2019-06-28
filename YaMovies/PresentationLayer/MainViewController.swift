@@ -20,11 +20,10 @@ class MainViewController: UIViewController {
     var tableView: UITableView!
     var collectionView: UICollectionView!
     var service: YandexOauthService!
-    private var videos: Results<VideoObject>!
-    private var folders: Results<FolderObject>!
+    private var objects: Results<ResourceListObject>!
     private var token: NotificationToken? = nil
 
-    var selectedKey: String = "" {
+    var currentSection: Int = 0 {
         didSet {
             collectionView.reloadData()
         }
@@ -35,8 +34,13 @@ class MainViewController: UIViewController {
   
         title = "YaMovies"
         realmManager = RealmManager()
-        folders = realmManager.realm.objects(FolderObject.self)
-        videos = realmManager.realm.objects(VideoObject.self)
+        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
+        
+        objects = realmManager.realm.objects(ResourceListObject.self)
 
         setupObserver()
         tableViewConfigure()
@@ -57,18 +61,13 @@ class MainViewController: UIViewController {
     
     private func setupObserver() {
 
-        token = folders.observe { (changes: RealmCollectionChange)  in
+        token = objects.observe { (changes: RealmCollectionChange)  in
             switch changes {
             case .initial:
                 self.tableView.reloadData()
-            case .update(_, let deletions, let insertions, let updates):
-                let fromRow = { (row: Int) in return IndexPath(row: row, section: 0) }
-                
-                self.tableView.beginUpdates()
-                self.tableView.insertRows(at: insertions.map(fromRow), with: .automatic)
-                self.tableView.reloadRows(at: updates.map(fromRow), with: .automatic)
-                self.tableView.deleteRows(at: deletions.map(fromRow), with: .automatic)
-                self.tableView.endUpdates()
+            case .update(_, _, _, _):
+                self.tableView.reloadData()
+                self.collectionView.reloadData()
             case .error(let error):
                 fatalError("\(error)")
             }
@@ -102,14 +101,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return folders.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") else {
             return UITableViewCell()
         }
-        cell.textLabel?.text = folders[indexPath.row].name
+        cell.textLabel?.text = objects[indexPath.row].name
         return cell
     }
     
@@ -119,32 +118,28 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         // Run when press
-        
-        print("didHighlightRowAt \(indexPath.row)")
+        getItemsFor(objects[indexPath.row], by: "\(objects[indexPath.row].path)")
+
     }
     
     func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        // Run when focus
         
-        guard let indexPath = context.nextFocusedIndexPath else {
-            return
-        }
-        
-        
-//        selectedKey = groups[indexPath.row]
+        guard let indexPath = context.nextFocusedIndexPath else { return }
+        currentSection = indexPath.row
+        collectionView.removeFromSuperview()
+        collectionViewConfigure()
     }
 }
 
 extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  0
+        return objects.count != 0 ? objects[currentSection].items.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: "FilmsCell", for: indexPath) as! MovieCollectionViewCell
-//        guard let models = films[selectedKey] else { return UICollectionViewCell() }
-//        item.setup(models[indexPath.row])
+        item.setup(objects[currentSection].items[indexPath.row])
         return item
     }
 }
@@ -204,11 +199,11 @@ extension MainViewController {
     func getContentBy(_ path: String) {
         
         service.getResourceBy(path, limit: 20, offset: 0) { (responce, error) in
-            var folders: [FolderObject] = []
+            var folders: [ResourceListObject] = []
             guard let items = responce?._embedded?.items else { return }
             items.forEach({ (item) in
                 if item.type == "dir" {
-                    let folder = FolderObject()
+                    let folder = ResourceListObject()
                     folder.name = item.name
                     folder.created = item.created
                     folder.resourceId = item.resource_id ?? ""
@@ -218,6 +213,32 @@ extension MainViewController {
                 }
             })
             self.realmManager.create(folders)
+        }
+    }
+    
+    func getItemsFor(_ object: ResourceListObject, by path: String) {
+        
+        service.getResourceBy(path, limit: 20, offset: 0) { (responce, error) in
+            guard let items = responce?._embedded?.items else { return }
+            
+            items.forEach({ (item) in
+                if item.media_type == "video" {
+                    let resource = ResourceObject()
+                    resource.name = item.name
+                    resource.created = item.created
+                    resource.resourceId = item.resource_id ?? ""
+                    resource.path = item.path
+                    resource.file = item.file ?? ""
+                    resource.mediaType = item.media_type ?? ""
+                    resource.preview = item.preview ?? ""
+                    resource.type = item.type
+                    resource.size = item.size ?? 0
+                    try? self.realmManager.realm.write {
+                        self.realmManager.realm.add(resource, update: .modified)
+                        object.items.append(resource)
+                    }
+                }
+            })
         }
     }
 }

@@ -30,11 +30,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-//    func setup(_ model: ResponceMovie) {
-//        
-//        guard let url = URL(string: model.thumb) else { return }
-//        Nuke.loadImage(with: url, into: imageView)
-//    }
+    func setup(_ model: ResourceObject) {
+        
+        guard let url = URL(string: model.preview) else { return }
+        Nuke.loadImage(with: url, into: imageView)
+    }
     
     func testImage(_ name: String) {
         
