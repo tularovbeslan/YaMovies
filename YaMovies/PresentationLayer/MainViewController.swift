@@ -66,7 +66,6 @@ class MainViewController: UIViewController {
             case .initial:
                 self.tableView.reloadData()
             case .update(_, _, _, _):
-                self.tableView.reloadData()
                 self.collectionView.reloadData()
             case .error(let error):
                 fatalError("\(error)")
@@ -117,14 +116,12 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        // Run when press
-        getItemsFor(objects[indexPath.row], by: "\(objects[indexPath.row].path)")
-
     }
     
     func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         guard let indexPath = context.nextFocusedIndexPath else { return }
+        getItemsFor(objects[indexPath.row], by: "\(objects[indexPath.row].path)")
         currentSection = indexPath.row
         collectionView.removeFromSuperview()
         collectionViewConfigure()
@@ -214,13 +211,16 @@ extension MainViewController {
             })
             self.realmManager.create(folders)
         }
+        self.tableView.reloadData()
     }
     
     func getItemsFor(_ object: ResourceListObject, by path: String) {
         
         service.getResourceBy(path, limit: 20, offset: 0) { (responce, error) in
             guard let items = responce?._embedded?.items else { return }
-            
+            try? self.realmManager.realm.write {
+                object.items.removeAll()
+            }
             items.forEach({ (item) in
                 if item.media_type == "video" {
                     let resource = ResourceObject()

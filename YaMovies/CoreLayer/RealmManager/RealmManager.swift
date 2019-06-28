@@ -16,7 +16,10 @@ class RealmManager {
     var realm: Realm
     
     init() {
-        let config = Realm.Configuration.defaultConfiguration
+        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
+            if (oldSchemaVersion < 1) { }
+        })
+        
         realm = try! Realm(configuration: config)
     }
     
