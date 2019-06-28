@@ -34,12 +34,6 @@ class MainViewController: UIViewController {
   
         title = "YaMovies"
         realmManager = RealmManager()
-        
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-        
         objects = realmManager.realm.objects(ResourceListObject.self)
 
         setupObserver()
@@ -48,11 +42,6 @@ class MainViewController: UIViewController {
         let network = NetworkImp()
         service = YandexOauthServiceImp(network: network)
         getContentBy("/")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     deinit {
@@ -110,7 +99,6 @@ extension MainViewController: UITableViewDataSource {
         cell.textLabel?.text = objects[indexPath.row].name
         return cell
     }
-    
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -158,8 +146,11 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        print("didHighlightItemAt - \(indexPath.row)")
-        performSegue(withIdentifier: "push", sender: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let playerViewController = storyboard.instantiateViewController(withIdentifier: String(describing: PlayerViewController.self)) as! PlayerViewController
+        playerViewController.url = objects[currentSection].items[indexPath.row].file
+        self.router.push(playerViewController)
     }
     
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let router = RouterImp(rootController: self.rootController)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: String(describing: MainViewController.self))
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: String(describing: MainViewController.self)) as! MainViewController
+        mainViewController.router = router
         let authorizationViewController = storyboard.instantiateViewController(withIdentifier: String(describing: AuthViewController.self)) as! AuthViewController
         authorizationViewController.router = router
         
