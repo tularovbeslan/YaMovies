@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         authorizationViewController.router = router
         
         if let token = UserDefaultsManager.accessToken {
-            guard let expiresIn = UserDefaultsManager.expiresIn else { return false }
+            KingfisherManager.shared.defaultOptions = [.requestModifier(TokenPlugin(token: token))]
+
+//            guard let expiresIn = UserDefaultsManager.expiresIn else { return false }
             router.setRootModule(mainViewController)
         } else {
             router.setRootModule(authorizationViewController)

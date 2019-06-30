@@ -55,7 +55,7 @@ struct YandexOauthServiceImp: YandexOauthService {
         
         guard let token = UserDefaultsManager.accessToken else { return }
         let url = URL(string: "https://cloud-api.yandex.net/v1/disk/resources")!
-        let parameters: [String : Any] = ["path": path, "limit" : limit, "offset" : offset]
+        let parameters: [String : Any] = ["path": path, "limit" : limit, "offset" : offset, "preview_size" : "L", "sort": "created", "media_type" : "video"]
         let headers: [String: String] = ["Authorization" : "OAuth \(token)", "Content-type" : "application/json"]
         
         network.requestObject(url, method: .get, parameters: parameters, headers: headers, encoding: .url, objectType: Resource.self) { (responce, error) in

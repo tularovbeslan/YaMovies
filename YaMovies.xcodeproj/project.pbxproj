@@ -39,6 +39,9 @@
 		2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A522C4FE870017C693 /* RealmManager.swift */; };
 		2B4B20A822C589A00017C693 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A722C589A00017C693 /* ShareInfo.swift */; };
 		2B4B20AA22C59A100017C693 /* ResourceListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20A922C59A100017C693 /* ResourceListObject.swift */; };
+		2B4B20AF22C815550017C693 /* UIAppleTVMotionEffectGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20AE22C815550017C693 /* UIAppleTVMotionEffectGroup.swift */; };
+		2B4B20B122C815790017C693 /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20B022C815790017C693 /* TokenPlugin.swift */; };
+		2B4B20B422C834E50017C693 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B20B322C834E50017C693 /* FolderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		2B4B20A522C4FE870017C693 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		2B4B20A722C589A00017C693 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
 		2B4B20A922C59A100017C693 /* ResourceListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceListObject.swift; sourceTree = "<group>"; };
+		2B4B20AE22C815550017C693 /* UIAppleTVMotionEffectGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppleTVMotionEffectGroup.swift; sourceTree = "<group>"; };
+		2B4B20B022C815790017C693 /* TokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
+		2B4B20B322C834E50017C693 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		5858A27678793D7C1ABCDB74 /* Pods-YaMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.release.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.release.xcconfig"; sourceTree = "<group>"; };
 		A061C7988BC5BAAA67745BF1 /* Pods-YaMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaMovies.debug.xcconfig"; path = "Target Support Files/Pods-YaMovies/Pods-YaMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		E5FBB784CC0460BA9F336211 /* Pods_YaMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YaMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,11 +230,10 @@
 		2B4B207822C29A4E0017C693 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B206622C0475A0017C693 /* UIViewExtension.swift */,
-				2B4B206422C045010017C693 /* MovieCollectionViewCell.swift */,
-				2B4B208022C399450017C693 /* AuthViewController.swift */,
-				2B4B203B22C01F2B0017C693 /* MainViewController.swift */,
-				2B4B207A22C2E0A90017C693 /* PlayerViewController.swift */,
+				2B4B20B222C815960017C693 /* Controllers */,
+				2B4B20AD22C815430017C693 /* Helpers */,
+				2B4B20AC22C815240017C693 /* Extensions */,
+				2B4B20AB22C814A40017C693 /* Views */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -290,6 +295,42 @@
 				2B4B20A522C4FE870017C693 /* RealmManager.swift */,
 			);
 			path = RealmManager;
+			sourceTree = "<group>";
+		};
+		2B4B20AB22C814A40017C693 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B206422C045010017C693 /* MovieCollectionViewCell.swift */,
+				2B4B20B322C834E50017C693 /* FolderTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2B4B20AC22C815240017C693 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B206622C0475A0017C693 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2B4B20AD22C815430017C693 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B20AE22C815550017C693 /* UIAppleTVMotionEffectGroup.swift */,
+				2B4B20B022C815790017C693 /* TokenPlugin.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2B4B20B222C815960017C693 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B208022C399450017C693 /* AuthViewController.swift */,
+				2B4B203B22C01F2B0017C693 /* MainViewController.swift */,
+				2B4B207A22C2E0A90017C693 /* PlayerViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A2446811DF626E5C818386FC /* Pods */ = {
@@ -497,6 +538,7 @@
 				2B4B209B22C4FC090017C693 /* CommentIds.swift in Sources */,
 				2B4B20A122C4FC360017C693 /* YaError.swift in Sources */,
 				2B4B209922C4FBEE0017C693 /* Exif.swift in Sources */,
+				2B4B20B422C834E50017C693 /* FolderTableViewCell.swift in Sources */,
 				2B4B207622C28D290017C693 /* Utils.swift in Sources */,
 				2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */,
 				2B4B206F22C0E2830017C693 /* Network.swift in Sources */,
@@ -508,6 +550,8 @@
 				2B4B208122C399450017C693 /* AuthViewController.swift in Sources */,
 				2B4B208922C401A70017C693 /* RouterImp.swift in Sources */,
 				2B4B208422C3B78B0017C693 /* UserDefaultsManager.swift in Sources */,
+				2B4B20B122C815790017C693 /* TokenPlugin.swift in Sources */,
+				2B4B20AF22C815550017C693 /* UIAppleTVMotionEffectGroup.swift in Sources */,
 				2B4B207B22C2E0A90017C693 /* PlayerViewController.swift in Sources */,
 				2B4B208B22C402060017C693 /* Presentable.swift in Sources */,
 			);

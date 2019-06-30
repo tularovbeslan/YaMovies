@@ -6,5 +6,5 @@ target 'YaMovies' do
 	pod 'Alamofire'
 	pod 'CodableAlamofire'
 	pod 'RealmSwift'
-	pod 'Nuke'
+	pod 'Kingfisher'
 end
