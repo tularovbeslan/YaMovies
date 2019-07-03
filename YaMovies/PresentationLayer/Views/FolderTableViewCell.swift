@@ -66,7 +66,6 @@ class FolderTableViewCell: UITableViewCell {
         context.nextFocusedView?.layer.shadowOpacity = 0.4
         context.nextFocusedView?.layer.shadowRadius = 10
         context.nextFocusedView?.layer.cornerRadius = 10
-
         
         context.previouslyFocusedView?.backgroundColor = .clear
         context.previouslyFocusedView?.layer.shadowColor = UIColor.black.cgColor
