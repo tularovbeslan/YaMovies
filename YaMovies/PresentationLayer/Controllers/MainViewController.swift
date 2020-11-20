@@ -39,8 +39,7 @@ class MainViewController: UIViewController {
         setupObserver()
         tableViewConfigure()
         collectionViewConfigure()
-        let network = NetworkImp()
-        service = YandexOauthServiceImp(network: network)
+        service = YandexOauthServiceImp()
         getContentBy("/")
     }
     
@@ -186,9 +185,9 @@ extension MainViewController {
     
     func getContentBy(_ path: String) {
         
-        service.getResourceBy(path, limit: 20, offset: 0) { (responce, error) in
+        service.getResourceBy(path, limit: 20, offset: 0) { (responce) in
             var folders: [ResourceListObject] = []
-            guard let items = responce?._embedded?.items else { return }
+            guard let items = responce._embedded?.items else { return }
             items.forEach({ (item) in
                 if item.type == "dir" {
                     let folder = ResourceListObject()
@@ -207,8 +206,8 @@ extension MainViewController {
     
     func getItemsFor(_ object: ResourceListObject, by path: String) {
         
-        service.getResourceBy(path, limit: 1000, offset: 0) { (responce, error) in
-            guard let items = responce?._embedded?.items else { return }
+        service.getResourceBy(path, limit: 1000, offset: 0) { (responce) in
+            guard let items = responce._embedded?.items else { return }
             try? self.realmManager.realm.write {
                 object.items.removeAll()
             }

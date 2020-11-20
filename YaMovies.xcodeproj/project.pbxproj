@@ -16,8 +16,6 @@
 		2B4B205722C01F2E0017C693 /* YaMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B205622C01F2E0017C693 /* YaMoviesUITests.swift */; };
 		2B4B206522C045010017C693 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B206422C045010017C693 /* MovieCollectionViewCell.swift */; };
 		2B4B206722C0475A0017C693 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B206622C0475A0017C693 /* UIViewExtension.swift */; };
-		2B4B206D22C0E26C0017C693 /* NetworkImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B206C22C0E26C0017C693 /* NetworkImp.swift */; };
-		2B4B206F22C0E2830017C693 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B206E22C0E2830017C693 /* Network.swift */; };
 		2B4B207622C28D290017C693 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B207522C28D290017C693 /* Utils.swift */; };
 		2B4B207B22C2E0A90017C693 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B207A22C2E0A90017C693 /* PlayerViewController.swift */; };
 		2B4B207D22C2F2710017C693 /* YandexOauthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B207C22C2F2710017C693 /* YandexOauthService.swift */; };
@@ -76,8 +74,6 @@
 		2B4B205822C01F2E0017C693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B4B206422C045010017C693 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B4B206622C0475A0017C693 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		2B4B206C22C0E26C0017C693 /* NetworkImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImp.swift; sourceTree = "<group>"; };
-		2B4B206E22C0E2830017C693 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2B4B207522C28D290017C693 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2B4B207A22C2E0A90017C693 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		2B4B207C22C2F2710017C693 /* YandexOauthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexOauthService.swift; sourceTree = "<group>"; };
@@ -194,18 +190,8 @@
 			children = (
 				2B4B20A422C4FE5C0017C693 /* RealmManager */,
 				2B4B208222C3B77A0017C693 /* UserDefaultsManager */,
-				2B4B206B22C0E25E0017C693 /* Network */,
 			);
 			path = CoreLayer;
-			sourceTree = "<group>";
-		};
-		2B4B206B22C0E25E0017C693 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				2B4B206E22C0E2830017C693 /* Network.swift */,
-				2B4B206C22C0E26C0017C693 /* NetworkImp.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		2B4B207022C0E2AD0017C693 /* BusinessLogicLayer */ = {
@@ -361,7 +347,7 @@
 				2B4B203222C01F2B0017C693 /* Sources */,
 				2B4B203322C01F2B0017C693 /* Frameworks */,
 				2B4B203422C01F2B0017C693 /* Resources */,
-				311F1CBCC19C49CC2549E54D /* [CP] Embed Pods Frameworks */,
+				E44B8A0C07062D4B04B99984 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -415,7 +401,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Beslan Tularov";
 				TargetAttributes = {
 					2B4B203522C01F2B0017C693 = {
@@ -479,23 +465,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		311F1CBCC19C49CC2549E54D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9034CDF7008C00F435200B1C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,6 +487,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E44B8A0C07062D4B04B99984 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YaMovies/Pods-YaMovies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -533,7 +519,6 @@
 				2B4B209722C4FBDF0017C693 /* Resource.swift in Sources */,
 				2B4B207D22C2F2710017C693 /* YandexOauthService.swift in Sources */,
 				2B4B206722C0475A0017C693 /* UIViewExtension.swift in Sources */,
-				2B4B206D22C0E26C0017C693 /* NetworkImp.swift in Sources */,
 				2B4B203A22C01F2B0017C693 /* AppDelegate.swift in Sources */,
 				2B4B209B22C4FC090017C693 /* CommentIds.swift in Sources */,
 				2B4B20A122C4FC360017C693 /* YaError.swift in Sources */,
@@ -541,7 +526,6 @@
 				2B4B20B422C834E50017C693 /* FolderTableViewCell.swift in Sources */,
 				2B4B207622C28D290017C693 /* Utils.swift in Sources */,
 				2B4B20A622C4FE870017C693 /* RealmManager.swift in Sources */,
-				2B4B206F22C0E2830017C693 /* Network.swift in Sources */,
 				2B4B209F22C4FC240017C693 /* ResponceToken.swift in Sources */,
 				2B4B209522C4FBC80017C693 /* ResourceList.swift in Sources */,
 				2B4B209D22C4FC160017C693 /* ResponceCode.swift in Sources */,
@@ -626,6 +610,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -686,6 +671,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -722,6 +708,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MTVD7A69KL;
 				INFOPLIST_FILE = YaMovies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -733,7 +720,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -745,6 +732,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MTVD7A69KL;
 				INFOPLIST_FILE = YaMovies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -756,7 +744,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

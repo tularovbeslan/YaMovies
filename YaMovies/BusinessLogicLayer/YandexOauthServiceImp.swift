@@ -18,9 +18,8 @@ enum YandexEndpoints: String {
 
 struct YandexOauthServiceImp: YandexOauthService {
     
-    var network: Network
     
-    func requestAccessCode(completion: @escaping (ResponceCode?, Error?) -> Void) {
+    func requestAccessCode(completion: @escaping (ResponceCode) -> Void) {
         
         let uuid = UUID().uuidString
         let deviceName = UIDevice.current.name.replacingOccurrences(of: " ", with: "")
@@ -28,14 +27,16 @@ struct YandexOauthServiceImp: YandexOauthService {
         let url = URL(string: YandexEndpoints.base.rawValue + YandexEndpoints.code.rawValue)!
         let scope = ["cloud_api:disk.app_folder", "cloud_api:disk.read", "cloud_api:disk.write", "cloud_api:disk.info", "yadisk:disk"]
         let parameters: [String : Any] = ["client_id": "\(clientId)", "device_id": "\(uuid)", "device_name": "\(deviceName)", "scope" : scope]
-        let headers: [String: String] = ["Content-type" : "application/json"]
-        
-        network.requestObject(url, method: .post, parameters: parameters, headers: headers, encoding: .url, objectType: ResponceCode.self) { (responce, error) in
-            completion(responce, error)
+        let headers: HTTPHeaders = HTTPHeaders(["Content-type" : "application/json"])
+        AF.request(url, method: .post, parameters: parameters, headers: headers)
+            .validate()
+            .responseDecodable(of: ResponceCode.self) { response in
+            guard let responceCode = response.value else { return }
+            completion(responceCode)
         }
     }
     
-    func requestTokenByDevice(_ code: String, completion: @escaping (ResponceToken?, Error?) -> Void) {
+    func requestTokenByDevice(_ code: String, completion: @escaping (ResponceToken) -> Void) {
         
         let clientSecret = Utils.password
         let clientId = Utils.id
@@ -44,22 +45,28 @@ struct YandexOauthServiceImp: YandexOauthService {
         let basic = clientId + ":" + clientSecret
         guard let data = basic.data(using: .utf8) else { return }
         
-        let headers: [String: String] = ["Authorization" : "Basic \(data.base64EncodedString())"]
+        let headers: HTTPHeaders = HTTPHeaders(["Authorization" : "Basic \(data.base64EncodedString())"])
         
-        network.requestObject(url, method: .post, parameters: parameters, headers: headers, encoding: .url, objectType: ResponceToken.self) { (responce, error) in
-            completion(responce, error)
+        AF.request(url, method: .post, parameters: parameters, headers: headers)
+            .validate()
+            .responseDecodable(of: ResponceToken.self) { response in
+            guard let responceCode = response.value else { return }
+            completion(responceCode)
         }
     }
     
-    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (Resource?, Error?) -> Void) {
+    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (Resource) -> Void) {
         
         guard let token = UserDefaultsManager.accessToken else { return }
         let url = URL(string: "https://cloud-api.yandex.net/v1/disk/resources")!
         let parameters: [String : Any] = ["path": path, "limit" : limit, "offset" : offset, "preview_size" : "L", "sort": "created", "media_type" : "video"]
-        let headers: [String: String] = ["Authorization" : "OAuth \(token)", "Content-type" : "application/json"]
+        let headers: HTTPHeaders = HTTPHeaders(["Authorization" : "OAuth \(token)", "Content-type" : "application/json"])
         
-        network.requestObject(url, method: .get, parameters: parameters, headers: headers, encoding: .url, objectType: Resource.self) { (responce, error) in
-            completion(responce, error)
+        AF.request(url, method: .get, parameters: parameters, headers: headers)
+            .validate()
+            .responseDecodable(of: Resource.self) { response in
+            guard let responceCode = response.value else { return }
+            completion(responceCode)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol YandexOauthService {
     
-    func requestAccessCode(completion: @escaping (ResponceCode?, Error?) -> Void)
-    func requestTokenByDevice(_ code: String, completion: @escaping (ResponceToken?, Error?) -> Void)
-    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (Resource?, Error?) -> Void)
+    func requestAccessCode(completion: @escaping (ResponceCode) -> Void)
+    func requestTokenByDevice(_ code: String, completion: @escaping (ResponceToken) -> Void)
+    func getResourceBy(_ path: String, limit: Int, offset: Int, completion: @escaping (Resource) -> Void)
 }

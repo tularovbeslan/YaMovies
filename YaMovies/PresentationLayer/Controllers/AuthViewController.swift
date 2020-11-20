@@ -24,13 +24,12 @@ class AuthViewController: UIViewController {
 
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: (#selector(requestToken)), userInfo: nil, repeats: true)
         
-        let network = NetworkImp()
-        service = YandexOauthServiceImp(network: network)
-        service.requestAccessCode { [weak self] (responce, error) in
+        service = YandexOauthServiceImp()
+        service.requestAccessCode { [weak self] (responce) in
             guard let `self` = self else { return }
-            guard let code = responce?.device_code else { return }
-            guard let verificationUrl = responce?.verification_url else { return }
-            guard let userCode = responce?.user_code else { return }
+            let code = responce.device_code
+            let verificationUrl = responce.verification_url
+            let userCode = responce.user_code
 
             self.code = code
             self.imageView.image = self.createQRCode(verificationUrl)
@@ -40,34 +39,21 @@ class AuthViewController: UIViewController {
     
     @objc func requestToken() {
         if !code.isEmpty {
-            service.requestTokenByDevice(code) { [weak self] (responce, error) in
+            service.requestTokenByDevice(code) { [weak self] (responce) in
                 guard let `self` = self else { return }
-                if error != nil {
-                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription ?? "", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    if let err = responce?.error {
-                        if err != "authorization_pending" {
-                            self.timer.invalidate()
-                        }
-                    } else {
-                        guard let accessToken = responce?.access_token else { return }
-                        guard let refreshToken = responce?.refresh_token else { return }
-                        guard let expiresIn = responce?.expires_in else { return }
-                        self.timer.invalidate()
-                        UserDefaultsManager.accessToken = accessToken
-                        UserDefaultsManager.refreshToken = refreshToken
-                        UserDefaultsManager.expiresIn = expiresIn
-                        KingfisherManager.shared.defaultOptions = [.requestModifier(TokenPlugin(token: accessToken))]
+                let accessToken = responce.access_token
+                let refreshToken = responce.refresh_token
+                let expiresIn = responce.expires_in
+                self.timer.invalidate()
+                UserDefaultsManager.accessToken = accessToken
+                UserDefaultsManager.refreshToken = refreshToken
+                UserDefaultsManager.expiresIn = expiresIn
+                KingfisherManager.shared.defaultOptions = [.requestModifier(TokenPlugin(token: accessToken))]
 
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let mainViewController = storyboard.instantiateViewController(withIdentifier: String(describing: MainViewController.self)) as! MainViewController
-                        mainViewController.router = self.router
-                        self.router.setRootModule(mainViewController)
-                    }
-                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: String(describing: MainViewController.self)) as! MainViewController
+                mainViewController.router = self.router
+                self.router.setRootModule(mainViewController)
             }
         }
     }

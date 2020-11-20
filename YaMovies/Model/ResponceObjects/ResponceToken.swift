@@ -11,7 +11,7 @@ import Foundation
 struct ResponceToken: Decodable {
     
     let token_type: String?
-    let access_token: String?
+    let access_token: String
     let expires_in: Int?
     let refresh_token: String?
     let error_description: String?

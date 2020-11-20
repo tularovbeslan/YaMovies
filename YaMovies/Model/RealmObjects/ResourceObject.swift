@@ -13,7 +13,7 @@ class ResourceObject: Object {
     
     @objc dynamic var name: String = ""
     @objc dynamic var created: String = ""
-    @objc dynamic var resourceId: String = UUID().uuidString
+    @objc dynamic var resourceId: String = ""
     @objc dynamic var path: String = ""
     @objc dynamic var file: String = ""
     @objc dynamic var mediaType: String = ""

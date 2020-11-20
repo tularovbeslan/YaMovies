@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'YaMovies' do
 	pod 'Alamofire'
-	pod 'CodableAlamofire'
 	pod 'RealmSwift'
 	pod 'Kingfisher'
 end
